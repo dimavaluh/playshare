@@ -1,0 +1,19 @@
+// USEFUL MONGO COMMANDS
+
+db.collection.find()
+//show all content of the collection
+
+mongoimport --db playshare --collection games --drop --file ~/desktop/playshare/db/games/games.json --jsonArray
+//upload document into ur database
+
+
+
+
+//USEFUL mongoose COMMANDS 
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('we are connected');
+});
+//will handle is db connected

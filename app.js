@@ -21,11 +21,25 @@ if(app.get('env') == 'development') {
 	app.use(morgan('dev'));
 }
 
-app.get('/', function(req, res, next) {
-	res.render('index', {
-		body: '<b>Hello world</b>'
-	});
+app.get('/*/games', function(req, res, next) {
+	if (req.url == '/index.html#/games') {
+		res.render('index', {
+		body: '<b>U try to load games page</b>'
+	}); 
+	} else {
+		next();
+	}
 });
+
+app.get('/#/games/', function(req, res, next) {
+	if (req.url == '/#/games') {
+		res.render('index', {
+			body: '<b>U try to load games page</b>'
+		});
+	} else {
+		res.end();
+	}
+})
 //app.use(express.favicon());
  //app.use(express.logger('dev'));
  //app.use(express.bodyParser());
