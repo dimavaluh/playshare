@@ -6,8 +6,8 @@
           <h4>In this genres</h4>
         </div>
         <div class="panel-body">
-          <div class="list-group">
-            <button type="button" class="list-group-item"><img ng-src="{{game.image.icon_url}}">Cras justo odio</button>
+          <div class="list-group genres-list">
+            <a ng-href="#/games/{{gameInGenre.id}}" class="list-group-item genres-i" ng-repeat="gameInGenre in gamesInThisGenre"><img class="genres-img" ng-src="{{gameInGenre.image.icon_url}}">{{gameInGenre.name}}</a>
           </div>
         </div>
       </div>
