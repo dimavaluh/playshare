@@ -5,12 +5,10 @@ var User = require('models/user').User;
 var db = mongoose.connection.db;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  console.log('we are connected');
+  console.log(mongoose.connection.readyState, ' - connecting');
 });
 
-mongoose.connection.on('open', function() {
 
-})
 
 // var user = new User({
 // 	username: 'Tester2',
