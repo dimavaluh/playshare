@@ -32,7 +32,7 @@ if(app.get('env') == 'development') {
 }
 
 
-// Set the static path
+// /Set the static path
 app.use(express.static(path.join(__dirname, 'public')));
 
 // set the error handler
