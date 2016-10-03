@@ -8,4 +8,8 @@ app.config(function($routeProvider){
             templateUrl: 'app/components/games/games.view.html',
             controller: 'gamesCtrl'
         })
+        .when('/login', {
+            templateUrl: 'app/components/login/login.view.html',
+            controller: 'loginCtrl'
+        })
 });
