@@ -7,7 +7,7 @@
         </div>
         <div class="panel-body">
           <div class="list-group">
-            <a href="" class="list-group-item" ng-repeat="genre in ff | orderBy: '-counts'" ng-click="setFilter(genre)">
+            <a class="list-group-item" ng-repeat="genre in ff | orderBy: '-counts'" ng-click="setFilter(genre)">
               <span class="badge">{{genre.counts}}</span>
               {{ genre.name }}
             </a>

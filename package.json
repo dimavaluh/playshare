@@ -1,0 +1,28 @@
+{
+  "name": "playshare",
+  "version": "1.0.0",
+  "description": "site for exchanging the box-sets of play station games",
+  "main": "app.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cawkabss/playshare.git"
+  },
+  "author": "cawkabss, shonie, dimavaluh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cawkabss/playshare/issues"
+  },
+  "homepage": "https://github.com/cawkabss/playshare#readme",
+  "dependencies": {
+    "async": "^2.0.1",
+    "ejs-mate": "^2.3.0",
+    "errorhandler": "^1.4.3",
+    "express": "^4.14.0",
+    "mongoose": "^4.6.2",
+    "morgan": "^1.7.0",
+    "winston": "^2.2.0"
+  }
+}
