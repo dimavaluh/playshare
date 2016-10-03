@@ -2,7 +2,7 @@
   "name": "playshare",
   "version": "1.0.0",
   "description": "site for exchanging the box-sets of play station games",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "node index.js"
   },
@@ -21,10 +21,8 @@
     "ejs-mate": "^2.3.0",
     "errorhandler": "^1.4.3",
     "express": "^4.14.0",
-    "http": "0.0.0",
     "mongoose": "^4.6.2",
     "morgan": "^1.7.0",
-    "path": "^0.12.7",
     "winston": "^2.2.0"
   }
 }
