@@ -1,0 +1,11 @@
+.navbar-form{
+  position: relative;
+}
+.search-results{
+  position: absolute;
+  top: 100%;
+  left: 15px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 999;
+}

@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="sidebar col-md-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h4>Filter by genres</h4>
+        </div>
+        <div class="panel-body">
+          <div class="list-group">
+            <a href="" class="list-group-item" ng-repeat="genre in ff | orderBy: '-counts'" ng-click="setFilter(genre)">
+              <span class="badge">{{genre.counts}}</span>
+              {{ genre.name }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="result col-md-8">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h4>Games</h4>
+        </div>
+        <div class="panel-body">
+          <div class="list-group">
+            <a ng-href="#/games/{{game.id}}" class="list-group-item clearfix" ng-repeat="game in allGames | filter: {$ : filterChoiceGenre}">
+                <h3 class="result-game-title">{{game.name}}</h3>
+                <div class="result-game-picture col-md-6">
+                  <img class="result-game-img" ng-src="{{game.image.medium_url}}">
+                </div>
+                <div class="result-game-content">
+                  <h5><strong>Genres:</strong></h5>
+                  <ul class="result-game-genres-list">
+                    <li class="result-game-genres-i" ng-repeat="genre in game.genres">{{genre.name}}</li>
+                  </ul>
+                  <h5><strong>Description:</strong></h5>
+                  <p class="result-game-desc">
+                    {{game.deck}}
+                  </p>
+                </div>
+              </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
