@@ -1,5 +1,5 @@
+// Vendor modules
 var express = require('express');
-var createDb = require('createDb');
 var fs = require('fs');
 var http = require('http');
 var path = require('path');
@@ -7,6 +7,8 @@ var errorhandler = require('errorhandler');
 var morgan = require('morgan');
 var engine = require('ejs-mate');
 
+// Own modules
+var createDb = require('./createDb');
 var router = require('./routers');
 var config = require('./config');
 
