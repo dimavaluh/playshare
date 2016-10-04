@@ -1,6 +1,6 @@
 app.controller('loginCtrl', ['$scope', '$http', function($scope, $http){
-    $scope.sendData = function(name, pass){
-        var data = {'email': name, 'pass': pass};
+    $scope.sendData = function(nick, email, pass){
+        var data = {'nickName': nick, 'email': email, 'password': pass};
         $http.post('/api/login', data);
     };
 }]);
