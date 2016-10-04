@@ -4,7 +4,12 @@ var mongoose = require('libs/mongoose'),
 Schema = mongoose.Schema;
 
 var schema = new Schema({
-	username: {
+	nickName: {
+		type: String,
+		unique: true,
+		required: true
+	},
+	email: {
 		type: String,
 		unique: true,
 		required: true

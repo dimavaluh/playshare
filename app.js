@@ -1,12 +1,14 @@
 var express = require('express');
+var createDb = require('createDb');
 var fs = require('fs');
 var http = require('http');
 var path = require('path');
 var errorhandler = require('errorhandler');
-var config = require('./config');
 var morgan = require('morgan');
 var engine = require('ejs-mate');
+
 var router = require('./routers');
+var config = require('./config');
 
 // Create the exemplar of express
 var app = express();
