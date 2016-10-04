@@ -1,5 +1,5 @@
 var express = require('express');
-var createDb = require('createDb');
+var createDb = require('./createDb');
 var fs = require('fs');
 var http = require('http');
 var path = require('path');

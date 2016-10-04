@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
-var config = require('config');
+var mongoose = require('../node_modules/mongoose');
+var config = require('../config');
 
 mongoose.connect(config.get('mongoose:uri'), config.get('mongoose:options'));
 
