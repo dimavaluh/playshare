@@ -10,3 +10,7 @@
 ::ffff:127.0.0.1 - - [03/Oct/2016:22:57:11 +0000] "GET /sign HTTP/1.1" 404 17
 ::ffff:127.0.0.1 - - [03/Oct/2016:22:57:14 +0000] "GET /sign HTTP/1.1" 404 17
 ::1 - - [04/Oct/2016:10:49:42 +0000] "GET /favicon.ico HTTP/1.1" 404 24
+::1 - - [04/Oct/2016:23:08:21 +0000] "GET /app/components/signin/signin.view.html HTTP/1.1" 404 51
+::1 - - [04/Oct/2016:23:09:43 +0000] "GET /app/components/signin/signin.view.html HTTP/1.1" 404 51
+::1 - - [04/Oct/2016:23:10:21 +0000] "GET /app/components/signin/signin.view.html HTTP/1.1" 404 51
+::1 - - [04/Oct/2016:23:21:07 +0000] "POST /api/signin HTTP/1.1" 404 24

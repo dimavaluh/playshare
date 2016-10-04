@@ -1,6 +1,6 @@
+var mongoose = require('./libs/mongoose');
 var async = require('async');
 
-var mongoose = require('./libs/mongoose');
 var User = require('./models/user').User;
 
 var db = mongoose.connection.db;

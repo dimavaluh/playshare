@@ -12,4 +12,8 @@ app.config(function($routeProvider){
             templateUrl: 'app/components/login/login.view.html',
             controller: 'loginCtrl'
         })
+        .when('/signin', {
+            templateUrl: 'app/components/signin/signin.view.html',
+            controller: 'SignInCtrl'
+        })
 });
