@@ -14,6 +14,10 @@ var schema = new Schema({
 		unique: true,
 		required: true
 	},
+	avatar: {
+		type: String,
+		default: 'http://i1.wp.com/www.techrepublic.com/bundles/techrepubliccore/images/icons/standard/icon-user-default.png'
+	},
 	hashedPassword: {
 		type: String,
 		required: true
