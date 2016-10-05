@@ -8,9 +8,10 @@ var morgan = require('morgan');
 var engine = require('ejs-mate');
 
 // Own modules
+var config = require('./config');
 var createDb = require('./createDb');
 var router = require('./routers');
-var config = require('./config');
+
 
 // Create the exemplar of express
 var app = express();
