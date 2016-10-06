@@ -24,6 +24,7 @@ router.use(session({ // for working with user's sessions
     secret: config.get("session:secret"),
     key: config.get("session:key"),
     cookie: config.get("session:cookie"),
+    saveUninitialized: config.get("session:saveUninitialized"),
     store: new MongoStore({mongooseConnection: mongoose.connection})
 }));
 
@@ -36,7 +37,7 @@ router.post('/api/login', upload.array(), function (req, res, next) {
         email: req.body.email,
         password: req.body.password
     });
-
+    console.log(user);
     user.save(function (err, user) {
         if (!err) {
             res.status(200).send('Accounts creation - successful');
@@ -62,7 +63,7 @@ async.waterfall([
         if(user) {
             if (user.checkPassword(password)) {
                 req.session.user = user._id;
-                console.log(user);
+                req.session.email = user.email;
                 res.status(200)
                     .json({"nickName": user.nickName, "email": user.email, "dateOfCreation": user.created, 'avatar': user.avatar})
                     .send();
@@ -77,6 +78,17 @@ async.waterfall([
     ], function(err, user) {
     if (err) return next(err);
     });
+});
+
+router.post('/api/logout', upload.array(), function(req, res, next) {
+    req.session.destroy(function (err) {
+        if (err) throw err;
+    });
+    res.status(200).send();
+});
+
+router.put('/api/account/shonie', function(req, res, next) {
+    console.log(req.body);
 });
 
 module.exports = router;
