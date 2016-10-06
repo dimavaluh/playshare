@@ -17,7 +17,7 @@ app.controller('accountCtrl', ['$scope', 'AppServices','$http', function($scope,
     };
 
     $scope.addGame = function (game) {
-        user.games.push(game);
+        user.gamesCollection.push(game);
         AppServices.saveSession(user);
         
         $scope.searchGame = {};
