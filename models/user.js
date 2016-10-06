@@ -20,7 +20,7 @@ var schema = new Schema({
 	},
 	location: {
 		type: String,
-		required: false
+		default: ''
 	},
 	gamesCollection: [],
 	hashedPassword: {

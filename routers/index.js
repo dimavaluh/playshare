@@ -37,7 +37,7 @@ router.post('/api/login', upload.array(), function (req, res, next) {
         email: req.body.email,
         password: req.body.password
     });
-
+    console.log(user);
     user.save(function (err, user) {
         if (!err) {
             res.status(200).send('Accounts creation - successful');
@@ -87,6 +87,8 @@ router.post('/api/logout', upload.array(), function(req, res, next) {
     res.status(200).send();
 });
 
-router.put('/api/')
+router.put('/api/account/shonie', function(req, res, next) {
+    console.log(req.body);
+});
 
 module.exports = router;
