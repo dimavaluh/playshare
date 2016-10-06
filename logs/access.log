@@ -1,3 +1,6 @@
 ::1 - - [06/Oct/2016:19:57:27 +0000] "PUT /api/account/shonie HTTP/1.1" 404 31
 ::1 - - [06/Oct/2016:20:04:06 +0000] "GET /favicon.ico HTTP/1.1" 404 24
 ::1 - - [06/Oct/2016:20:07:27 +0000] "GET /favicon.ico HTTP/1.1" 404 24
+::1 - - [06/Oct/2016:21:13:09 +0000] "PUT /api/account/dog HTTP/1.1" 404 28
+::1 - - [06/Oct/2016:21:39:12 +0000] "GET /favicon.ico HTTP/1.1" 404 24
+::1 - - [06/Oct/2016:21:39:35 +0000] "GET /favicon.ico HTTP/1.1" 404 24
