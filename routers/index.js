@@ -65,6 +65,7 @@ async.waterfall([
         if(user) {
             if (user.checkPassword(password)) {
                 req.session.user = user._id;
+                req.session.email = user.email;
                 console.log('the user is ' + req.session.user);
                 res.status(200)
                     .json({"nickName": user.nickName, "email": user.email, "dateOfCreation": user.created, 'avatar': user.avatar})
@@ -83,13 +84,9 @@ async.waterfall([
 });
 
 router.post('/api/logout', upload.array(), function(req, res, next) {
-    //var nickname = req.body.nickName;
-    //console.log('req.body.nickname is ', req.body.nickName);
-    console.log('SID is ', req.sessionID);
     req.session.destroy(function (err) {
         if (err) throw err;
     });
-    console.log('after destroy SID is', req.sessionID);
     res.status(200).send('disconnected');
 });
 
