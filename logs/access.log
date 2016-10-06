@@ -16,3 +16,4 @@
 ::1 - - [04/Oct/2016:23:21:07 +0000] "POST /api/signin HTTP/1.1" 404 24
 ::1 - - [05/Oct/2016:03:11:49 +0000] "GET /favicon.ico HTTP/1.1" 404 24
 ::1 - - [05/Oct/2016:17:49:53 +0000] "GET /favicon.ico HTTP/1.1" 404 24
+::1 - - [05/Oct/2016:23:37:54 +0000] "GET /favicon.ico HTTP/1.1" 404 24
