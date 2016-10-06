@@ -24,6 +24,7 @@ router.use(session({ // for working with user's sessions
     secret: config.get("session:secret"),
     key: config.get("session:key"),
     cookie: config.get("session:cookie"),
+    saveUninitialized: config.get("session:saveUninitialized"),
     store: new MongoStore({mongooseConnection: mongoose.connection})
 }));
 
@@ -51,6 +52,8 @@ router.post('/api/login', upload.array(), function (req, res, next) {
 });
 
 router.post('/api/signin', upload.array(), function (req, res, next) {
+    console.log(req.sessionID);
+
     var email = req.body.email;
     var password = req.body.password;
 
@@ -62,7 +65,7 @@ async.waterfall([
         if(user) {
             if (user.checkPassword(password)) {
                 req.session.user = user._id;
-                console.log(user);
+                console.log('the user is ' + req.session.user);
                 res.status(200)
                     .json({"nickName": user.nickName, "email": user.email, "dateOfCreation": user.created, 'avatar': user.avatar})
                     .send();
@@ -80,11 +83,14 @@ async.waterfall([
 });
 
 router.post('/api/logout', upload.array(), function(req, res, next) {
-    var nickname = req.body.nickName;
-
-    req.session.destroy();
-    res.redirect('/');
-    res.send('Successfully logged out');
+    //var nickname = req.body.nickName;
+    //console.log('req.body.nickname is ', req.body.nickName);
+    console.log('SID is ', req.sessionID);
+    req.session.destroy(function (err) {
+        if (err) throw err;
+    });
+    console.log('after destroy SID is', req.sessionID);
+    res.status(200).send('disconnected');
 });
 
 module.exports = router;
