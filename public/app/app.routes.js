@@ -1,6 +1,6 @@
 app.config(function($routeProvider){
     $routeProvider
-        .when('/games/:id', {
+        .when('/games/genre/:genre/:id', {
             templateUrl: 'app/components/game/game.view.html',
             controller: 'gameCtrl'
         })
@@ -8,12 +8,16 @@ app.config(function($routeProvider){
             templateUrl: 'app/components/games/games.view.html',
             controller: 'gamesCtrl'
         })
-        .when('/login', {
-            templateUrl: 'app/components/login/login.view.html',
-            controller: 'loginCtrl'
+        .when('/account/:id', {
+            templateUrl: 'app/components/account/account.view.html',
+            controller: 'accountCtrl'
         })
         .when('/signin', {
             templateUrl: 'app/components/signin/signin.view.html',
             controller: 'SignInCtrl'
+        })
+        .when('/register', {
+            templateUrl: 'app/components/register/register.view.html',
+            controller: 'RegisterCtrl'
         })
 });

@@ -6,8 +6,10 @@
           <h4>In this genres</h4>
         </div>
         <div class="panel-body">
-          <div class="list-group">
-            <button type="button" class="list-group-item"><img ng-src="{{game.image.icon_url}}">Cras justo odio</button>
+          <div class="list-group genres-list">
+            <a ng-href="#/games/genre/{{genreName}}/{{game.$id}}" class="list-group-item genres-i" ng-repeat="game in allGames | filter: genreName: true">
+              <img class="genres-img" ng-src="{{game.img}}">{{game.title}}
+            </a>
           </div>
         </div>
       </div>
@@ -18,18 +20,18 @@
           <h4>Results</h4>
         </div>
         <div class="panel-body">
-          <h3 class="result-game-title">{{game.name}}</h3>
+          <h3 class="result-game-title">{{game.title}}</h3>
           <div class="result-game-picture col-md-6">
-            <img class="result-game-img" ng-src="{{game.image.medium_url}}">
+            <img class="result-game-img" ng-src="{{game.img}}" ng-click="gg()">
           </div>
           <div class="result-game-content">
             <h5><strong>Genres:</strong></h5>
             <ul class="result-game-genres-list">
-              <li class="result-game-genres-i" ng-repeat="genre in game.genres">{{genre.name}}</li>
+              <li class="result-game-genres-i" ng-repeat="genre in game.genres">{{genre}}</li>
             </ul>
             <h5><strong>Description:</strong></h5>
             <p class="result-game-desc">
-              {{game.deck}}
+              {{game.desc}}
             </p>
           </div>
         </div>

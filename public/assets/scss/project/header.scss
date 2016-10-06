@@ -1,6 +1,23 @@
 .navbar-form{
   position: relative;
 }
+.profile-btn{
+  display: block;
+  float: left;
+  margin: 5px 15px;
+  color: #2198ff;
+  transition: all .5s;
+
+  &:hover{
+    text-decoration: none;
+    color: #143d75;
+  }
+}
+.profile-img{
+  margin-right: 10px;
+  height: 40px;
+  border-radius: 50%;
+}
 .search-results{
   position: absolute;
   top: 100%;

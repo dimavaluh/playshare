@@ -24,7 +24,8 @@
         <ul class="nav navbar-nav">
           <li><a href="#">Home</a></li>
           <li><a href="#/games">Games</a></li>
-          <li><a href="#/login">Sign-in/Register</a></li>
+          <li ng-if="!signUser"><a href="#/signin">Sign in</a></li>
+          <li ng-if="signUser"><a href="#/logout">Log out</a></li>
         </ul>
         <form class="navbar-form navbar-left">
           <div class="form-group">
@@ -33,10 +34,14 @@
           <button type="submit" class="btn btn-default">Submit</button>
           <div class="search-results">
             <div class="list-group clearfix" ng-if="search && show">
-              <a class="list-group-item" ng-repeat="game in allGames | filter:search" ng-click="setGameTitle(game.name)" ng-href="#/games/{{game.id}}">{{game.name}}</a>
+              <a class="list-group-item" ng-repeat="game in allGames | filter:search" ng-click="setGameTitle(game.name)" ng-href="#/games/genre/{{game.genres[0]}}/{{game.$id}}">{{game.title}}</a>
             </div>
           </div>
         </form>
+        <a href="#/account/{{signUser.uid}}" class="profile-btn" ng-if="signUser">
+          <img ng-src="{{signUser.avatar}}" class="profile-img">
+          {{signUser.nickName}}
+        </a>
       </div>
     </nav>
   </div>
@@ -51,17 +56,20 @@
 
 
 <script src="https://code.angularjs.org/1.5.8/angular.min.js"></script>
-<script src="https://code.angularjs.org/1.5.8/angular-animate.min.js"></script>
 <script src="https://code.angularjs.org/1.5.8/angular-route.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.4/ui-bootstrap-tpls.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+<script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>
+
 <script src="app/app.module.js"></script>
+<script src="app/app.services.js"></script>
 <script src="app/components/game/game.controller.js"></script>
 <script src="app/components/games/games.controller.js"></script>
-<script src="app/components/login/login.controller.js"></script>
+<script src="app/components/account/account.controller.js"></script>
 <script src="app/components/signin/signin.controller.js"></script>
+<script src="app/components/register/register.controller.js"></script>
+
 <script src="app/app.routes.js"></script>
-<script src="assets/js/clientSideValidation.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
