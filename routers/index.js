@@ -79,4 +79,12 @@ async.waterfall([
     });
 });
 
+router.post('/api/logout', upload.array(), function(req, res, next) {
+    var nickname = req.body.nickName;
+
+    req.session.destroy();
+    res.redirect('/');
+    res.send('Successfully logged out');
+});
+
 module.exports = router;
