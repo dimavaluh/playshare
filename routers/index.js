@@ -52,8 +52,6 @@ router.post('/api/login', upload.array(), function (req, res, next) {
 });
 
 router.post('/api/signin', upload.array(), function (req, res, next) {
-    console.log(req.sessionID);
-
     var email = req.body.email;
     var password = req.body.password;
 
@@ -66,7 +64,6 @@ async.waterfall([
             if (user.checkPassword(password)) {
                 req.session.user = user._id;
                 req.session.email = user.email;
-                console.log('the user is ' + req.session.user);
                 res.status(200)
                     .json({"nickName": user.nickName, "email": user.email, "dateOfCreation": user.created, 'avatar': user.avatar})
                     .send();
@@ -87,7 +84,9 @@ router.post('/api/logout', upload.array(), function(req, res, next) {
     req.session.destroy(function (err) {
         if (err) throw err;
     });
-    res.status(200).send('disconnected');
+    res.status(200).send();
 });
+
+router.put('/api/')
 
 module.exports = router;

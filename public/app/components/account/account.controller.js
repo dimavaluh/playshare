@@ -27,14 +27,11 @@ app.controller('accountCtrl', ['$scope', 'AppServices','$http', function($scope,
 
         $http.put('/api/account/' + nickName, user)
             .then(function successCallback(response) {
-                // here we must redirect user to the homepage
                 if (response.status == 200){
                     AppServices.saveSession(user);
                 }
             }, function errorCallback(response) {
-                // here we get message that nickName or email already exist, so we have to render this message in the view
-                console.log(response.data); //
-
+                console.log(response.data);
             });
     }
 }]);

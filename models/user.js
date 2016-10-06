@@ -18,6 +18,11 @@ var schema = new Schema({
 		type: String,
 		default: 'http://i1.wp.com/www.techrepublic.com/bundles/techrepubliccore/images/icons/standard/icon-user-default.png'
 	},
+	location: {
+		type: String,
+		required: false
+	},
+	gamesCollection: [],
 	hashedPassword: {
 		type: String,
 		required: true
