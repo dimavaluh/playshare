@@ -40,7 +40,7 @@ router.post('/api/login', upload.array(), function (req, res, next) {
     console.log(user);
     user.save(function (err, user) {
         if (!err) {
-            res.status(200).send('Accounts creation - successful');
+            res.status(200).send(user);
         }
 
         if (err && err.message.includes('nickName')) {
@@ -65,7 +65,15 @@ async.waterfall([
                 req.session.user = user._id;
                 req.session.email = user.email;
                 res.status(200)
-                    .json({"nickName": user.nickName, "email": user.email, "dateOfCreation": user.created, 'avatar': user.avatar})
+                    .json({
+                        "nickName": user.nickName,
+                        "email": user.email,
+                        "dateOfCreation": user.created,
+                        'avatar': user.avatar,
+                        "location": user.location,
+                        "gamesCollection": user.gamesCollection,
+                        "_id": user._id
+                    })
                     .send();
             } else {
                 res.status(403).send('Wrong password');
@@ -87,8 +95,16 @@ router.post('/api/logout', upload.array(), function(req, res, next) {
     res.status(200).send();
 });
 
-router.put('/api/account/shonie', function(req, res, next) {
-    console.log(req.body);
+
+router.param('nickName', function(res, req, next, nickName) {
+    User.findOne({nickName: nickName}, function(err, user) {
+        if (err) throw err;
+        console.log('the user frob DB is ' + user + '\n=================================================');
+    });
+    next();
+});
+router.put('/api/account/:nickName', function(req, res, next) {
+
 });
 
 module.exports = router;

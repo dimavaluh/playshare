@@ -30,6 +30,7 @@ app.controller('mainCtrl',['$scope', 'AppServices', '$location', function($scope
             .then(function successCallback(response) {
                 // here we must redirect user to the homepage
                 if (response.status == 200){
+                    console.log(response.data);
                     AppServices.saveSession(response.data);
                     $scope.signUser = JSON.parse(AppServices.getUser());
                     $location.path('#')
