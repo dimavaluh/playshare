@@ -38,7 +38,7 @@
             </div>
           </div>
         </form>
-        <a href="#/account/{{signUser.nickName}}" class="profile-btn" ng-if="signUser">
+        <a href="#/account/{{signUser._id}}" class="profile-btn" ng-if="signUser">
           <img ng-src="{{signUser.avatar}}" class="profile-img">
           {{signUser.nickName}}
         </a>

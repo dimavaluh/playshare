@@ -38,7 +38,7 @@
       <div class="col-md-6 col-md-offset-1">
         <h3>Your games:</h3>
         <ul class="account-user-games-list">
-          <li class="account-user-game-i col-md-3" ng-repeat="userGame in signUser.games">
+          <li class="account-user-game-i col-md-3" ng-repeat="userGame in signUser.gamesCollection">
             <img ng-src="{{userGame.img}}">
             {{userGame.title}}
           </li>
@@ -58,7 +58,7 @@
       </div>
     </div>
     <div class="account-action">
-      <button class="btn btn-success save-changes" ng-click="saveChanges(signUser.nickName, signUser)">Save changes</button>
+      <button class="btn btn-success save-changes" ng-click="saveChanges(signUser._id, signUser)">Save changes</button>
     </div>
   </div>
 </div>

@@ -23,9 +23,9 @@ app.controller('accountCtrl', ['$scope', 'AppServices','$http', function($scope,
         $scope.searchGame = {};
     };
 
-    $scope.saveChanges = function(nickName, user){
+    $scope.saveChanges = function(id, user){
 
-        $http.put('/api/account/' + nickName, user)
+        $http.put('/api/account/' + id, user)
             .then(function successCallback(response) {
                 if (response.status == 200){
                     AppServices.saveSession(user);
