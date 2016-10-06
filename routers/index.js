@@ -65,7 +65,15 @@ async.waterfall([
                 req.session.user = user._id;
                 req.session.email = user.email;
                 res.status(200)
-                    .json({"nickName": user.nickName, "email": user.email, "dateOfCreation": user.created, 'avatar': user.avatar, "location": user.location, "gamesCollection": user.gamesCollection})
+                    .json({
+                        "nickName": user.nickName,
+                        "email": user.email,
+                        "dateOfCreation": user.created,
+                        'avatar': user.avatar,
+                        "location": user.location,
+                        "gamesCollection": user.gamesCollection,
+                        "_id": user._id
+                    })
                     .send();
             } else {
                 res.status(403).send('Wrong password');
