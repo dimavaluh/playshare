@@ -24,10 +24,8 @@ app.factory('AppServices', ['$firebaseArray', '$firebaseObject', '$http', functi
             var data = {'nickName': nick, 'email': email, 'password': pass};
             return $http.post('/api/login', data)
         },
-        gg: function(){
-            return gamesRef.orderByChild('title').equalTo('Battlefield 4').on('child_added', function(snap){
-                console.log(snap.key);
-            });
+        logout: function(nickName){
+            return $http.post('/api/logout', {nickName: nickName})
 
         }
     }
