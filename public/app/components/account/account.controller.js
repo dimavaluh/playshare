@@ -28,6 +28,7 @@ app.controller('accountCtrl', ['$scope', 'AppServices','$http', function($scope,
         $http.put('/api/account/' + id, user)
             .then(function successCallback(response) {
                 if (response.status == 200){
+                    console.log(response.data);
                     AppServices.saveSession(user);
                 }
             }, function errorCallback(response) {

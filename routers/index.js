@@ -29,8 +29,6 @@ router.use(session({ // for working with user's sessions
 }));
 
 
-
-
 router.post('/api/login', upload.array(), function (req, res, next) {
     var user = new User({
         nickName: req.body.nickName,
@@ -55,40 +53,40 @@ router.post('/api/signin', upload.array(), function (req, res, next) {
     var email = req.body.email;
     var password = req.body.password;
 
-async.waterfall([
-    function(callback) {
-        User.findOne({email: email}, callback);
-    },
-    function(user, callback) {
-        if(user) {
-            if (user.checkPassword(password)) {
-                req.session.user = user._id;
-                req.session.email = user.email;
-                res.status(200)
-                    .json({
-                        "nickName": user.nickName,
-                        "email": user.email,
-                        "dateOfCreation": user.created,
-                        'avatar': user.avatar,
-                        "location": user.location,
-                        "gamesCollection": user.gamesCollection,
-                        "_id": user._id
-                    })
-                    .send();
+    async.waterfall([
+        function (callback) {
+            User.findOne({email: email}, callback);
+        },
+        function (user, callback) {
+            if (user) {
+                if (user.checkPassword(password)) {
+                    req.session.user = user._id;
+                    req.session.email = user.email;
+                    res.status(200)
+                        .json({
+                            "nickName": user.nickName,
+                            "email": user.email,
+                            "dateOfCreation": user.created,
+                            'avatar': user.avatar,
+                            "location": user.location,
+                            "gamesCollection": user.gamesCollection,
+                            "_id": user._id
+                        })
+                        .send();
+                } else {
+                    res.status(403).send('Wrong password');
+                }
             } else {
-                res.status(403).send('Wrong password');
+                res.status(403).send('The account was not found, maybe you are not yet registered');
             }
-        } else {
-            res.status(403).send('The account was not found, maybe you are not yet registered');
+            callback(null, user);
         }
-        callback(null, user);
-    }
-    ], function(err, user) {
-    if (err) return next(err);
+    ], function (err, user) {
+        if (err) return next(err);
     });
 });
 
-router.post('/api/logout', upload.array(), function(req, res, next) {
+router.post('/api/logout', upload.array(), function (req, res, next) {
     req.session.destroy(function (err) {
         if (err) throw err;
     });
@@ -96,15 +94,41 @@ router.post('/api/logout', upload.array(), function(req, res, next) {
 });
 
 
-router.param('nickName', function(res, req, next, nickName) {
-    User.findOne({nickName: nickName}, function(err, user) {
+router.param('id', function (res, req, next, id) {
+    User.findOne({_id: id}, function (err, user) {
         if (err) throw err;
-        console.log('the user frob DB is ' + user + '\n=================================================');
+        //console.log('the user frob DB is ' + user + '\n=================================================');
     });
     next();
 });
-router.put('/api/account/:nickName', function(req, res, next) {
+router.put('/api/account/:id', function (req, res, next) {
+    console.log('req user is ', req.body);
 
+    User.update({_id: req.params.id}, {
+        nickName: req.body.nickName,
+        email: req.body.email,
+        avatar: req.body.avatar,
+        location: req.body.location,
+        gamesCollection: req.body.gamesCollection
+    }, function (err, affected) {
+        if (err) console.log(err);
+        console.log('affected - ', affected);
+        //console.log('resp ', res);
+    });
+
+    User.findOne({_id: req.params.id}, function (err, user) {
+        if (err) console.log(err);
+        console.log('DB user is now ', user);
+        res.status(200)
+            .json({
+                nickName: user.nickName,
+                email: user.email,
+                avatar: user.avatar,
+                location: user.location,
+                gamesCollection: user.gamesCollection
+            })
+            .send();
+    })
 });
 
 module.exports = router;
