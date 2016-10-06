@@ -11,7 +11,7 @@
         <ul class="user-info">
           <li class="user-full-name">
             <label class="control-label">Your Nickname
-              <input class="form-control" type="text" placeholder="{{signUser.nickName}}" disabled>
+              <input class="form-control" type="text" ng-model="signUser.nickName">
             </label>
             <a class="btn btn-primary" href="#" role="button">Edit
               <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
@@ -19,7 +19,7 @@
           </li>
           <li class="user-email">
             <label class="control-label">Your e-mail
-              <input class="form-control" type="text" placeholder="{{signUser.email}}" disabled>
+              <input class="form-control" type="text" ng-model="signUser.email">
             </label>
             <a class="btn btn-primary" href="#" role="button">Edit
               <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
@@ -27,7 +27,7 @@
           </li>
           <li class="user-location">
             <label class="control-label">Your location
-              <input class="form-control" type="text" placeholder="{{ signUser.location }}" disabled>
+              <input class="form-control" type="text" ng-model="signUser.location">
             </label>
             <a class="btn btn-primary" href="#" role="button">Edit
               <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
@@ -35,23 +35,30 @@
           </li>
         </ul>
       </div>
-      <div class="col-md-6 col-md-offset-2">
+      <div class="col-md-6 col-md-offset-1">
         <h3>Your games:</h3>
         <ul class="account-user-games-list">
-          <li class="account-user-game-i"></li>
+          <li class="account-user-game-i col-md-3" ng-repeat="userGame in signUser.games">
+            <img ng-src="{{userGame.img}}">
+            {{userGame.title}}
+          </li>
         </ul>
-        <form class="navbar-form">
+        <form class="form-inline">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search" ng-model="search" ng-focus="search = ''" ng-change="hideResults()">
+            <label for="add-game">Add one game</label>
+            <input type="text" class="form-control" id="add-game" placeholder="Input game name" ng-model="searchGame.title" ng-change="hideResults()">
           </div>
-          <button type="submit" class="btn btn-default">Submit</button>
+          <button class="btn btn-primary" ng-click="addGame(searchGame)">Add</button>
           <div class="search-results">
-            <div class="list-group clearfix" ng-if="search && show">
-              <a class="list-group-item" ng-repeat="game in allGames | filter:search" ng-click="setGameTitle(game.name)" ng-href="#/games/genre/{{game.genres[0]}}/{{game.$id}}">{{game.title}}</a>
+            <div class="list-group clearfix" ng-if="searchGame && show">
+              <a class="list-group-item" ng-repeat="game in allGames | filter:searchGame.title" href="" ng-click="choose(game)">{{game.title}}</a>
             </div>
           </div>
         </form>
       </div>
+    </div>
+    <div class="account-action">
+      <button class="btn btn-success save-changes" ng-click="saveChanges(signUser.nickName, signUser)">Save changes</button>
     </div>
   </div>
 </div>

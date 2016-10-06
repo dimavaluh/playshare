@@ -1,4 +1,4 @@
-app.factory('AppServices', ['$firebaseArray', '$firebaseObject', '$http', function($firebaseArray, $firebaseObject, $http, $rootScope){
+app.factory('AppServices', ['$firebaseArray', '$http', '$window', '$rootScope',  function($firebaseArray, $http, $window, $rootScope){
 
     var gamesRef = firebase.database().ref().child('games');
 
@@ -20,6 +20,14 @@ app.factory('AppServices', ['$firebaseArray', '$firebaseObject', '$http', functi
             var data = {'email': email, 'password': pass};
             return $http.post('/api/signin', data)
         },
+        saveSession: function(user){
+            $window.localStorage && $window.localStorage.setItem('signUser', JSON.stringify(user));
+            return this;
+        },
+        getUser: function(){
+            return $window.localStorage && $window.localStorage.getItem('signUser');
+        },
+        
         register: function(nick, email, pass){
             var data = {'nickName': nick, 'email': email, 'password': pass};
             return $http.post('/api/login', data)
