@@ -7,8 +7,6 @@
 ::1 - - [03/Oct/2016:18:07:15 +0000] "POST /api/login HTTP/1.1" 404 23
 ::1 - - [03/Oct/2016:22:28:10 +0000] "GET /favicon.ico HTTP/1.1" 404 24
 ::1 - - [03/Oct/2016:22:35:18 +0000] "GET /login HTTP/1.1" 404 18
-::ffff:127.0.0.1 - - [03/Oct/2016:22:57:11 +0000] "GET /sign HTTP/1.1" 404 17
-::ffff:127.0.0.1 - - [03/Oct/2016:22:57:14 +0000] "GET /sign HTTP/1.1" 404 17
 ::1 - - [04/Oct/2016:10:49:42 +0000] "GET /favicon.ico HTTP/1.1" 404 24
 ::1 - - [04/Oct/2016:23:08:21 +0000] "GET /app/components/signin/signin.view.html HTTP/1.1" 404 51
 ::1 - - [04/Oct/2016:23:09:43 +0000] "GET /app/components/signin/signin.view.html HTTP/1.1" 404 51
@@ -18,3 +16,4 @@
 ::1 - - [05/Oct/2016:17:49:53 +0000] "GET /favicon.ico HTTP/1.1" 404 24
 ::1 - - [05/Oct/2016:23:37:54 +0000] "GET /favicon.ico HTTP/1.1" 404 24
 ::1 - - [06/Oct/2016:12:02:14 +0000] "GET /favicon.ico HTTP/1.1" 404 24
+

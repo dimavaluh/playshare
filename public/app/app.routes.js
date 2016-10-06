@@ -8,7 +8,7 @@ app.config(function($routeProvider){
             templateUrl: 'app/components/games/games.view.html',
             controller: 'gamesCtrl'
         })
-        .when('/account/:id', {
+        .when('/account/:nick', {
             templateUrl: 'app/components/account/account.view.html',
             controller: 'accountCtrl'
         })
@@ -19,5 +19,8 @@ app.config(function($routeProvider){
         .when('/register', {
             templateUrl: 'app/components/register/register.view.html',
             controller: 'RegisterCtrl'
+        })
+        .when('/logout', {
+            controller: 'LogoutCtrl'
         })
 });
