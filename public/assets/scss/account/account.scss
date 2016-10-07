@@ -11,13 +11,29 @@
   }
 }
 .account-action{
+  margin-bottom: 20px;
   text-align: center;
 }
 .account-user-games-list{
   display: flex;
 }
 .account-user-game-i{
+  position: relative;
   img{
     width: 100%;
   }
+
+  &:hover .hover-wrapper{
+    color: red;
+    opacity: 1;
+    text-decoration: none;
+  }
+}
+.hover-wrapper{
+  position: absolute;
+  top: -5%;
+  left: 95%;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
 }

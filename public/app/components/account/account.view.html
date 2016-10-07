@@ -11,25 +11,25 @@
         <ul class="user-info">
           <li class="user-full-name">
             <label class="control-label">Your Nickname
-              <input class="form-control" type="text" ng-model="signUser.nickName">
+              <input class="form-control" type="text" ng-model="signUser.nickName" ng-disabled="!disabled.nickName">
             </label>
-            <a class="btn btn-primary" href="#" role="button">Edit
+            <a class="btn btn-primary" href="" role="button" ng-click="edit('nickName')">Edit
               <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
             </a>
           </li>
           <li class="user-email">
             <label class="control-label">Your e-mail
-              <input class="form-control" type="text" ng-model="signUser.email">
+              <input class="form-control" type="text" ng-model="signUser.email" ng-disabled="!disabled.email">
             </label>
-            <a class="btn btn-primary" href="#" role="button">Edit
+            <a class="btn btn-primary" href="" role="button" ng-click="edit('email')">Edit
               <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
             </a>
           </li>
           <li class="user-location">
-            <label class="control-label">Your location
-              <input class="form-control" type="text" ng-model="signUser.location">
+            <label class="control-label" ng-click="edit('location')">Your location
+              <input class="form-control" type="text" ng-model="signUser.location" ng-disabled="!disabled.location">
             </label>
-            <a class="btn btn-primary" href="#" role="button">Edit
+            <a class="btn btn-primary" href="" role="button">Edit
               <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
             </a>
           </li>
@@ -41,6 +41,9 @@
           <li class="account-user-game-i col-md-3" ng-repeat="userGame in signUser.gamesCollection">
             <img ng-src="{{userGame.img}}">
             {{userGame.title}}
+            <a href="" class="hover-wrapper" ng-click="deleteGame(userGame)">
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </a>
           </li>
         </ul>
         <form class="form-inline">

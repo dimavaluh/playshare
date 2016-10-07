@@ -23,6 +23,26 @@ app.controller('accountCtrl', ['$scope', 'AppServices','$http', function($scope,
         $scope.searchGame = {};
     };
 
+    $scope.deleteGame = function(game){
+        user.gamesCollection = user.gamesCollection.filter(function(el) {
+            return el.title !== game.title;
+        });
+        console.log(user);
+        AppServices.saveSession(user);
+    };
+
+    $scope.disabled = {};
+    $scope.edit = function(item){
+        if(item == 'nickName'){
+            $scope.disabled.nickName = true;
+        }
+        if(item == 'email'){
+            $scope.disabled.email = true;
+        }
+        if(item == 'location'){
+            $scope.disabled.location = true;
+        }
+    };
     $scope.saveChanges = function(id, user){
 
         $http.put('/api/account/' + id, user)
