@@ -3,7 +3,7 @@
     <div class="panel-heading">
       Register
     </div>
-    <div class="panel-body">
+    <div class="panel-body clearfix">
       <div class="col-md-6 col-md-offset-3">
         <form class="form-horizontal" ng-submit="register(nickName, email, userPass)">
           <div class="form-group">
@@ -30,6 +30,10 @@
             </div>
           </div>
         </form>
+      </div>
+      <div class="alert alert-danger alert-dismissible col-md-6 col-md-offset-3 alert-msg" role="alert" ng-if="errorMsg">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {{errorMsg}}
       </div>
     </div>
   </div>

@@ -7,7 +7,7 @@ app.controller('RegisterCtrl', ['$scope', '$location', 'AppServices', function($
             }
         }, function errorCallback(response) {
             // here we get message that nickName or email already exist, so we have to render this message in the view
-            console.log(response.data); //
+            $scope.errorMsg = response.data;
 
         });
     } 
