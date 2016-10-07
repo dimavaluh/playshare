@@ -1,10 +1,13 @@
-app.controller('gameCtrl', ['$scope', '$routeParams','$firebaseObject', function($scope, $routeParams, $firebaseObject){
-    var id = $routeParams.id;
+app.controller('gameCtrl', ['$scope', '$routeParams','AppServices', function($scope, $routeParams, AppServices){
+    var title = $routeParams.name;
     $scope.genreName = $routeParams.genre;
-    var gameRef = firebase.database().ref().child('games').child(id);
-    var genreRef = firebase.database().ref().child('genres').orderByChild('name').equalTo($scope.genreName);
-    $scope.game = $firebaseObject(gameRef);
-    $scope.gamesInGenre = $firebaseObject(genreRef);
+    AppServices.getOneGame(title).then(function successCallback(response) {
+        if (response.status == 200){
+            return $scope.allGames = response.data;
+        }
+    }, function errorCallback(response) {
+        console.log(response.data);
 
+    });
 
 }]);

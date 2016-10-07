@@ -6,3 +6,6 @@
 ::1 - - [06/Oct/2016:21:39:35 +0000] "GET /favicon.ico HTTP/1.1" 404 24
 ::1 - - [07/Oct/2016:00:09:30 +0000] "GET /favicon.ico HTTP/1.1" 404 24
 ::1 - - [07/Oct/2016:00:11:41 +0000] "GET /favicon.ico HTTP/1.1" 404 24
+::1 - - [07/Oct/2016:10:36:43 +0000] "GET /api/gamesBattlefield%204 HTTP/1.1" 404 37
+::1 - - [07/Oct/2016:10:37:02 +0000] "GET /api/gamesBattlefield%204 HTTP/1.1" 404 37
+::1 - - [07/Oct/2016:10:48:00 +0000] "GET /api/gamesFIFA%2014 HTTP/1.1" 404 31

@@ -12,8 +12,8 @@ app.controller('accountCtrl', ['$scope', 'AppServices','$http', function($scope,
 
     $scope.choose = function(game){
         $scope.show = false;
-        $scope.searchGame.title = game.title;
-        $scope.searchGame.img = game.img;
+        $scope.searchGame.title = game.name;
+        $scope.searchGame.img = game.image;
     };
 
     $scope.addGame = function (game) {

@@ -7,8 +7,8 @@
         </div>
         <div class="panel-body">
           <div class="list-group genres-list">
-            <a ng-href="#/games/genre/{{genreName}}/{{game.$id}}" class="list-group-item genres-i" ng-repeat="game in allGames | filter: genreName: true">
-              <img class="genres-img" ng-src="{{game.img}}">{{game.title}}
+            <a ng-href="#/games/{{game.name}}" class="list-group-item genres-i" ng-repeat="game in allGames | filter: genreName: true">
+              <img class="genres-img" ng-src="{{game.image}}">{{game.name}}
             </a>
           </div>
         </div>
@@ -20,9 +20,9 @@
           <h4>Results</h4>
         </div>
         <div class="panel-body">
-          <h3 class="result-game-title">{{game.title}}</h3>
+          <h3 class="result-game-title">{{game.name}}</h3>
           <div class="result-game-picture col-md-6">
-            <img class="result-game-img" ng-src="{{game.img}}" ng-click="gg()">
+            <img class="result-game-img" ng-src="{{game.image}}">
           </div>
           <div class="result-game-content">
             <h5><strong>Genres:</strong></h5>
@@ -31,7 +31,7 @@
             </ul>
             <h5><strong>Description:</strong></h5>
             <p class="result-game-desc">
-              {{game.desc}}
+              {{game.deck}}
             </p>
           </div>
         </div>

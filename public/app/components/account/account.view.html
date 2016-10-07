@@ -54,7 +54,7 @@
           <button class="btn btn-primary" ng-click="addGame(searchGame)">Add</button>
           <div class="search-results">
             <div class="list-group clearfix" ng-if="searchGame && show">
-              <a class="list-group-item" ng-repeat="game in allGames | filter:searchGame.title" href="" ng-click="choose(game)">{{game.title}}</a>
+              <a class="list-group-item" ng-repeat="game in allGames | filter:searchGame.title" href="" ng-click="choose(game)">{{game.name}}</a>
             </div>
           </div>
         </form>

@@ -10,6 +10,9 @@ app.factory('AppServices', ['$firebaseArray', '$http', '$window', '$rootScope', 
         getAllGames : function(){
             return $http.get('/api/games')
         },
+        getOneGame: function(title){
+            return $http.get('/api/games' + title)
+        },
         getAllGenres : function(){
             return $firebaseArray(genresRef);
         },
