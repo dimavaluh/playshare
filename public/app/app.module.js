@@ -13,7 +13,16 @@ var app = angular.module('playshare', ['ngRoute', 'firebase']);
 
 app.controller('mainCtrl',['$scope', 'AppServices', '$location', function($scope, AppServices, $location){
 
-    $scope.allGames = AppServices.getAllGames();
+    $scope.allGames = AppServices.getAllGames().then(function successCallback(response) {
+        // here we must redirect user to the homepage
+        if (response.status == 200){
+           return response.data;
+        }
+    }, function errorCallback(response) {
+        // here we get message that nickName or email already exist, so we have to render this message in the view
+        console.log(response.data); //
+
+    });
 
     $scope.allGenres = AppServices.getAllGenres();
 

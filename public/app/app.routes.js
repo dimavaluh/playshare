@@ -1,6 +1,6 @@
 app.config(function($routeProvider){
     $routeProvider
-        .when('/games/genre/:genre/:id', {
+        .when('/games/:title', {
             templateUrl: 'app/components/game/game.view.html',
             controller: 'gameCtrl'
         })
