@@ -7,9 +7,11 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var multer = require('multer');
 var upload = multer();
+var _ = require('underscore');
 
 var config = require('../config');
 var User = require('../models/user').User;
+var Game = require('../models/game');
 
 
 var router = express.Router();
@@ -29,6 +31,39 @@ router.use(session({ // for working with user's sessions
 }));
 
 
+router.get('/api/games', upload.array(), function (req, res, next) {
+    Game.find({}, function(err, games) {
+        if (err) console.log(err);
+        //console.log(games);
+        var gamesArr = [];
+
+        //here we pick only needed field for /games tab
+        _.each(games, function(game) {
+            gamesArr.push(_.pick(game, 'id', 'image', 'name', 'deck', 'genres'));
+        });
+
+        _.each(gamesArr, function(game, index) {
+            //here we pick only the genres' names from the json
+            var genres = [];
+            _.each(_.pick(game, 'genres').genres, function(genre) {
+                genres.push(_.pick(genre, 'name').name);
+            });
+            gamesArr[index]['genres'] = genres;
+
+            //here we pick only one type of image from the json
+            gamesArr[index]['image'] = _.pick(game, 'image').image.medium_url;
+        });
+
+        var result = {};
+        for (var i=0; i < gamesArr.length; i++) {
+            result[gamesArr[i].key] = gamesArr[i].value;
+        }
+        console.log(result);
+
+        res.status(200).send((gamesArr));
+    });
+});
+
 router.post('/api/login', upload.array(), function (req, res, next) {
     var user = new User({
         nickName: req.body.nickName,
@@ -38,7 +73,15 @@ router.post('/api/login', upload.array(), function (req, res, next) {
     console.log(user);
     user.save(function (err, user) {
         if (!err) {
-            res.status(200).send(user);
+            res.status(200).json({
+                "nickName": user.nickName,
+                "email": user.email,
+                "dateOfCreation": user.created,
+                'avatar': user.avatar,
+                "location": user.location,
+                "gamesCollection": user.gamesCollection,
+                "_id": user._id
+            }).send();
         }
 
         if (err && err.message.includes('nickName')) {
@@ -113,7 +156,6 @@ router.put('/api/account/:id', function (req, res, next) {
     }, function (err, affected) {
         if (err) console.log(err);
         console.log('affected - ', affected);
-        //console.log('resp ', res);
     });
 
     User.findOne({_id: req.params.id}, function (err, user) {
@@ -128,7 +170,7 @@ router.put('/api/account/:id', function (req, res, next) {
                 gamesCollection: user.gamesCollection
             })
             .send();
-    })
+    });
 });
 
 module.exports = router;

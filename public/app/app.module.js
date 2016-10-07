@@ -16,6 +16,7 @@ app.controller('mainCtrl',['$scope', 'AppServices', '$location', function($scope
     $scope.allGames = AppServices.getAllGames().then(function successCallback(response) {
         // here we must redirect user to the homepage
         if (response.status == 200){
+            console.log(response.data);
            return response.data;
         }
     }, function errorCallback(response) {

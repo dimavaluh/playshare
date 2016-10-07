@@ -9,6 +9,7 @@ var engine = require('ejs-mate');
 
 // Own modules
 var config = require('./config');
+var dropDb = require('./dropDb');
 var createDb = require('./createDb');
 var router = require('./routers');
 
